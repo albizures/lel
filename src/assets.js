@@ -1,0 +1,1 @@
+exports.energy = require('./assets/energy.png');
