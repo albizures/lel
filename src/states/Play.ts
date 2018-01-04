@@ -1,20 +1,21 @@
 import * as Phaser from 'phaser-ce';
 
-import * as assets from '../assets.js'
+import HexGrid from '../components/HexGrid';
 
 export default class Play extends Phaser.State {
   test: Phaser.Sprite;
-  preload() {
-    this.game.load.image('test', assets.energy);
-  }
+  canvas: HexGrid;
 
   create() {
-    this.test = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'test');
+    this.test = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'energy');
     this.test.anchor.setTo(0.5, 0.5);
     this.test.scale.set(4, 4);
 
-    console.log('create play');
-    
+    this.canvas = new HexGrid(this.game, 4, 4);
+
+    this.stage.backgroundColor = '#fff';
+
+    this.canvas.scale.set(10, 10)
   }
 
   update () {
